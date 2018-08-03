@@ -1,4 +1,4 @@
-package com.example.snail.network;
+package com.example.snail.network.bean;
 
 import java.util.List;
 

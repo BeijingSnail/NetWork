@@ -4,12 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.snail.network.MainActivity">
+    tools:context="com.example.snail.network.activity.MainActivity">
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BUTTON"/>
+        android:text="BUTTON" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/select_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选图" />
+
+    <ImageView
+        android:id="@+id/iamge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/uoload_imags_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上传多张" />
 
 </LinearLayout>

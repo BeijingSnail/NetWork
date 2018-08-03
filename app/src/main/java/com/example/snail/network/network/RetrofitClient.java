@@ -1,11 +1,12 @@
-package com.example.snail.network;
+package com.example.snail.network.network;
 
 
+import com.example.snail.network.BuildConfig;
+import com.example.snail.network.network.api.ApiService;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.SSLSocketFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -20,7 +21,7 @@ public class RetrofitClient {
     public static final String BASEURL = "http://101.201.145.159:9090/WebRoot/";
 
     private static RetrofitClient instance;
-
+    private final long TimeOut = 7000;
     private Retrofit builder;
     private ApiService mApiService;
 
@@ -30,10 +31,9 @@ public class RetrofitClient {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);//日志级别
 
         OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder()
-                .readTimeout(3000, TimeUnit.MILLISECONDS)
-                .writeTimeout(3000, TimeUnit.MILLISECONDS)
-                .connectTimeout(3000, TimeUnit.MILLISECONDS);
-
+                .readTimeout(TimeOut, TimeUnit.MILLISECONDS)
+                .writeTimeout(TimeOut, TimeUnit.MILLISECONDS)
+                .connectTimeout(TimeOut, TimeUnit.MILLISECONDS);
 
         if (BuildConfig.DEBUG) {
             okHttpBuilder.addInterceptor(new RequestLoggerInterceptor());
@@ -46,6 +46,7 @@ public class RetrofitClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+
         mApiService = builder.create(ApiService.class);
     }
 
